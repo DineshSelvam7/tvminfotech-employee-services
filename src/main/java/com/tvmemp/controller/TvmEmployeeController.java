@@ -29,7 +29,7 @@ public class TvmEmployeeController {
 
 		return ser.saveEmp(employee);
 	}
-	
+
 	@GetMapping("/getEmployee/{id}")
 	public Optional<TvmEmployee> getEmployee(@PathVariable("id") Integer id) {
 
@@ -40,12 +40,11 @@ public class TvmEmployeeController {
 	public List<TvmEmployee> getAllEmployee(TvmEmployee employee) {
 		return ser.getAllEmp(employee);
 	}
-	
+
 	@GetMapping("/getAllEmployee/{salary}")
 	public List<TvmEmployee> getAllEmployee(@PathVariable("salary") Long salary) {
 		return ser.getEmployeeBySalary(salary);
 	}
-	
 
 	@PutMapping("/updateEmp/{id}")
 	public TvmEmployee updateEmp(@PathVariable("id") Integer id, @RequestBody TvmEmployee emp) {
@@ -62,11 +61,23 @@ public class TvmEmployeeController {
 		return "Deleted Successfully !!!!";
 
 	}
+
+	// filtering employee by specific details
+
+	@GetMapping("/employeefirstname/{employeefirstname}")
+	public List<TvmEmployee> getAllEmployeebyName(@PathVariable("employeefirstname") String employeefirstname) {
+		return ser.getEmployeefirstName(employeefirstname);
+	}
+
+	@GetMapping("/employeelastname/{employeelastname}")
+	public List<TvmEmployee> getAllEmployeebylastName(@PathVariable("employeelastname") String employeelastname) {
+		return ser.getEmployeeBylastName(employeelastname);
+	}
+	
+	@GetMapping("/employeepassout/{yearofPassout}")
+	public List<TvmEmployee> getAllEmployeebyyearofPassout(@PathVariable("yearofPassout") String yearofPassout) {
+		return ser.getEmployeeByPassout(yearofPassout);
+	}
 	
 
-	
-	
-	
-	
-   
 }

@@ -19,7 +19,20 @@ public interface EmployeeService {
 
 	public void deleteEmployee(Integer id);
 
+	//filtering employee by specific details
+	
 	public List<TvmEmployee>getEmployeeBySalary(Long employeesalary );
+	
+	public List<TvmEmployee>getEmployeefirstName(String employeefirstname );
+	
+	public List<TvmEmployee>getEmployeeBylastName(String employeelastname );
+	
+	public List<TvmEmployee> getEmployeeByPassout(String yearofPassout);
+
+
+	
+
+
 
 
 

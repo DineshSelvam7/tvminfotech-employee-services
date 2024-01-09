@@ -66,16 +66,29 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	}
 
+	// filtering employee by specific details
+
 	@Override
 	public List<TvmEmployee> getEmployeeBySalary(Long employeesalary) {
-		
+
 		return repo.getEmployeeBySalary(employeesalary);
 	}
 
+	@Override
+	public List<TvmEmployee> getEmployeefirstName(String employeefirstname) {
 
-    
+		return repo.getEmployeefirstName(employeefirstname);
+	}
 
-	
-	
+	@Override
+	public List<TvmEmployee> getEmployeeBylastName(String employeelastname) {
+		return repo.getEmployeeBylastName(employeelastname);
+	}
+
+	@Override
+	public List<TvmEmployee> getEmployeeByPassout(String yearofPassout) {
+		
+		return repo.getEmployeeByPassout(yearofPassout);
+	}
 
 }

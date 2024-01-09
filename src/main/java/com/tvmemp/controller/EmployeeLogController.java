@@ -1,8 +1,10 @@
 package com.tvmemp.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,37 +17,37 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-
 
 @RestController
 @RequestMapping("/tvm")
 public class EmployeeLogController {
 
 	@Autowired
-	private EmployeeLogRepo repo;
+	private EmployeeLogRepo loginrepo;
 
 	@Autowired
 	private EmployeeLogoutRepo logoutrepo;
-	
-	
 
-	@PostMapping("/savelogout")
-	public EmployeeLogout saveLogout(@RequestBody EmployeeLogout emplog) {
-		return logoutrepo.save(emplog);
+	@PostMapping("/saveLogin")
+
+	public EmployeeLog saveLogin(@RequestBody EmployeeLog login) {
+
+		return loginrepo.save(login);
 	}
 
-	@PostMapping("/savelogin")
-	public EmployeeLog saveLog(@RequestBody EmployeeLog emplog) {
-		return repo.save(emplog);
+	@PostMapping("/saveLogout")
+
+	public EmployeeLogout saveLogout(@RequestBody EmployeeLogout logout) {
+
+		return logoutrepo.save(logout);
 	}
-	
-	@GetMapping("/getLogdetails/id")
-	public Optional<EmployeeLog> getMethodName(@PathVariable("id") Integer id) {
-		
-		return repo.findById(id);
-		
+
+	// Getting login details By using employee id
+
+	@GetMapping("/getLogdetails/{id}")
+	public List<Object[]> getBylogid(@PathVariable("id") Integer id) {
+
+		return loginrepo.getBylogid(id);
 	}
-	
 
 }
