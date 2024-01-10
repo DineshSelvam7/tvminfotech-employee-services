@@ -19,23 +19,24 @@ public interface TvmEmployeeRepository extends JpaRepository<TvmEmployee, Intege
 	@Query(value = "SELECT * from tvmemployee n WHERE n.employeelastname=:employeelastname", nativeQuery = true)
 	public List<TvmEmployee> getEmployeeBylastName(String employeelastname);
 
+	// Getting Employee details using passed out year
+
 	@Query(value = "SELECT t.assestid,t.employeeesalary,t.employeeemail,t.employeefirstname,t.employeelastname,t.employeephone,e.education_id, e.percentage, e.university, e.yearof_passout "
-			+ "FROM tvmemployee t LEFT JOIN employeeeducation e "
-			+ "ON t.employeeid=e.employeeid " + "WHERE e.yearof_passout=:yearofPassout", nativeQuery = true)
+			+ "FROM tvmemployee t LEFT JOIN employeeeducation e " + "ON t.employeeid=e.employeeid "
+			+ "WHERE e.yearof_passout=:yearofPassout", nativeQuery = true)
 
-	public List<TvmEmployee> getEmployeeByPassout(String yearofPassout);
-	
-	
-	// Getting Employee using Assest Id
-	
-	@Query(value="SELECT t.employeefirstname,t.employeelastname,"
-			+ "t.employeeemail,t.employeeesalary,e.charger, e.headphone, "
-			+ "e.laptop FROM tvmemployee t LEFT JOIN empassest e "
-			+ "ON t.assestid = e.assestid WHERE e.laptop=:laptop" ,nativeQuery = true )
-	public List<Object[]> getEmployeeBylaptop(String laptop);
+	public List<Object[]> getEmployeeByPassout(String yearofPassout);
 
+	// Getting EmployeeAssest using employee id 
 	
+	@Query(value = "SELECT te.employeeid, te.employeeemail, te.employeefirstname, te.employeelastname, te.employeephone, te.employeeesalary, "
+			+ "ea.assestid, ea.charger, ea.headphone, ea.laptop FROM tvmemployee te LEFT JOIN empassest ea ON te.assestid=ea.assestid "
+			+ "WHERE te.employeeid=:employeeId", nativeQuery = true)
+    public List<TvmEmployee> findByAssestId(Integer employeeId);
 	
-	
+	@Query(value = "SELECT te.employeeid, te.employeeemail, te.employeefirstname, te.employeelastname, te.employeephone, te.employeeesalary, "
+			+ "ea.assestid, ea.charger, ea.headphone, ea.laptop FROM tvmemployee te LEFT JOIN empassest ea ON te.assestid=ea.assestid "
+			+ "WHERE ea.laptop=:laptop", nativeQuery = true)
+    public List<TvmEmployee> findByAssestlaptop(String laptop);
 
 }

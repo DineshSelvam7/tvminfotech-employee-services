@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tvmemp.model.TvmEmployee;
 import com.tvmemp.service.EmployeeService;
 
+// TVM Employee Controller Class
+
 @RestController
 @RequestMapping("/tvm")
 public class TvmEmployeeController {
@@ -73,21 +75,22 @@ public class TvmEmployeeController {
 	public List<TvmEmployee> getAllEmployeebylastName(@PathVariable("employeelastname") String employeelastname) {
 		return ser.getEmployeeBylastName(employeelastname);
 	}
-	
+
 	@GetMapping("/employeepassout/{yearofPassout}")
-	public List<TvmEmployee> getAllEmployeebyyearofPassout(@PathVariable("yearofPassout") String yearofPassout) {
+	public List<Object[]> getAllEmployeebyyearofPassout(@PathVariable("yearofPassout") String yearofPassout) {
 		return ser.getEmployeeByPassout(yearofPassout);
 	}
-	
-	// Getting Assest Details Using assest id
-	
-	@GetMapping("/employeelaptop/{laptop}")
-	public List<Object[]> getAllEmployeelaptop(@PathVariable("laptop") String laptop) {
-		return ser.getEmployeeBylaptop(laptop);
-	}
-	
-	
-	
-	
 
+	// Getting Assets Details Using assets id
+	
+	 @GetMapping("/getEmployeeByAssestId/{assestId}")
+	    public List<TvmEmployee> getEmployeeByAssestId(@PathVariable("assestId") Integer assestId) {
+	        return ser.findByAssestId(assestId);
+	    }
+	 
+	 @GetMapping("/getEmployeeByAssestlaptop/{laptop}")
+	    public List<TvmEmployee> getEmployeeByAssestId(@PathVariable("laptop") String laptop) {
+	        return ser.findByAssestlaptop(laptop);
+	    
+	 }
 }

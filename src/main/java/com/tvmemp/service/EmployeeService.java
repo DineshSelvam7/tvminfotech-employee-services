@@ -27,11 +27,14 @@ public interface EmployeeService {
 	
 	public List<TvmEmployee>getEmployeeBylastName(String employeelastname );
 	
-	public List<TvmEmployee> getEmployeeByPassout(String yearofPassout);
+	public List<Object[]> getEmployeeByPassout(String yearofPassout);
 	
 	// Getting Employee using Assets id
 	
-	public List<Object[]> getEmployeeBylaptop(String laptop);
+	public List<TvmEmployee> findByAssestId(Integer assestId);
+	
+	
+    public List<TvmEmployee> findByAssestlaptop(String laptop);
 
 
 

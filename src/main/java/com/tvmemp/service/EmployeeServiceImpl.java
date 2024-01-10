@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
+import com.tvmemp.model.Employee_Assest;
 import com.tvmemp.model.TvmEmployee;
 import com.tvmemp.repository.TvmEmployeeRepository;
 
@@ -55,6 +56,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		emp1.setEmployeePhone(employee.getEmployeePhone());
 		emp1.setEmployeeAddress(employee.getEmployeeAddress());
 		emp1.setEmployeeEducation(employee.getEmployeeEducation());
+		emp1.setAssest(employee.getAssest());
 		return repo.save(emp1);
 
 	}
@@ -87,7 +89,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public List<TvmEmployee> getEmployeeByPassout(String yearofPassout) {
+	public List<Object[]> getEmployeeByPassout(String yearofPassout) {
 		
 		return repo.getEmployeeByPassout(yearofPassout);
 	}
@@ -95,9 +97,15 @@ public class EmployeeServiceImpl implements EmployeeService {
 	//Getting Employee details Using Assets Id
 	
 	@Override
-	public List<Object[]> getEmployeeBylaptop(String laptop) {
+	public List<TvmEmployee> findByAssestId(Integer assest) {
 		
-		return repo.getEmployeeBylaptop(laptop);
+		return repo.findByAssestId(assest);
+	}
+
+	@Override
+	public List<TvmEmployee> findByAssestlaptop(String laptop) {
+		
+		return repo.findByAssestlaptop(laptop);
 	}
 
 }
