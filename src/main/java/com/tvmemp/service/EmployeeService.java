@@ -28,6 +28,11 @@ public interface EmployeeService {
 	public List<TvmEmployee>getEmployeeBylastName(String employeelastname );
 	
 	public List<TvmEmployee> getEmployeeByPassout(String yearofPassout);
+	
+	// Getting Employee using Assets id
+	
+	public List<Object[]> getEmployeeBylaptop(String laptop);
+
 
 
 	

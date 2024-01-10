@@ -79,5 +79,15 @@ public class TvmEmployeeController {
 		return ser.getEmployeeByPassout(yearofPassout);
 	}
 	
+	// Getting Assest Details Using assest id
+	
+	@GetMapping("/employeelaptop/{laptop}")
+	public List<Object[]> getAllEmployeelaptop(@PathVariable("laptop") String laptop) {
+		return ser.getEmployeeBylaptop(laptop);
+	}
+	
+	
+	
+	
 
 }

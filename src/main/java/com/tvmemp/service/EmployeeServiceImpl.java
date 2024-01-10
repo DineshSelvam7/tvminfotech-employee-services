@@ -22,6 +22,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	/**
 	 * save employee details
 	 */
+	
 	@Override
 	public TvmEmployee saveEmp(TvmEmployee employee) {
 		return repo.save(employee);
@@ -89,6 +90,14 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public List<TvmEmployee> getEmployeeByPassout(String yearofPassout) {
 		
 		return repo.getEmployeeByPassout(yearofPassout);
+	}
+
+	//Getting Employee details Using Assets Id
+	
+	@Override
+	public List<Object[]> getEmployeeBylaptop(String laptop) {
+		
+		return repo.getEmployeeBylaptop(laptop);
 	}
 
 }
