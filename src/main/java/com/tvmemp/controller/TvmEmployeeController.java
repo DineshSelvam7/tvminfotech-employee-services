@@ -1,6 +1,7 @@
 package com.tvmemp.controller;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,7 +78,7 @@ public class TvmEmployeeController {
 	}
 
 	@GetMapping("/employeepassout/{yearofPassout}")
-	public List<Object[]> getAllEmployeebyyearofPassout(@PathVariable("yearofPassout") String yearofPassout) {
+	public List<Map<String, Object>>getAllEmployeebyyearofPassout(@PathVariable("yearofPassout") String yearofPassout) {
 		return ser.getEmployeeByPassout(yearofPassout);
 	}
 
@@ -93,4 +94,24 @@ public class TvmEmployeeController {
 	        return ser.findByAssestlaptop(laptop);
 	    
 	 }
+	 //Employee Technologies
+	 
+	 @GetMapping("/getByTechName/{techname}")
+		public List<TvmEmployee> getByName(@PathVariable("techname") String str)
+		{
+			return ser.findByUsersName(str);
+		}
+
+		
+	 //Employee Log details 
+	 
+		@GetMapping("/getBynameLogin/{employeefirstname}")
+		public List<Map<String, Object>> getEmployeeNameWithInfoLogin(@PathVariable("employeefirstname") String empf){
+			return ser.getByNameWithLogin(empf);
+		}
+		
+		@GetMapping("/getbyedlog/{employeeid}")
+		public List<Map<String, Object>> getByemployeeIdLog(@PathVariable("employeeid") Integer id){
+			return ser.getByEmpIdWithLogin(id);
+		}
 }

@@ -1,6 +1,7 @@
 package com.tvmemp.controller;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +46,7 @@ public class EmployeeLogController {
 	// Getting login details By using employee id
 
 	@GetMapping("/getLogdetails/{id}")
-	public List<Object[]> getBylogid(@PathVariable("id") Integer id) {
+	public List<Map<String, Object>> getBylogid(@PathVariable("id") Integer id) {
 
 		return loginrepo.getBylogid(id);
 	}

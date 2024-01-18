@@ -44,6 +44,14 @@ public class TvmEmployee {
 	@JoinColumn(name="assestid")
 	private Employee_Assest assest;
 	
+	@OneToMany(targetEntity = EmployeeProjectDetails.class, cascade = CascadeType.ALL)
+	@JoinColumn(name = "employeeid")
+	private List<EmployeeProjectDetails> employeeprojectdetails;
+
+	@OneToMany(targetEntity = EmployeeTechnolgyDetails.class, cascade = CascadeType.ALL)
+	@JoinColumn(name = "employeeid")
+	private List<EmployeeTechnolgyDetails> employeetechnologydetails;
+	
 	public Integer getEmployeeId() {
 		return employeeId;
 	}
@@ -114,6 +122,22 @@ public class TvmEmployee {
 
 	public void setAssest(Employee_Assest assest) {
 		this.assest = assest;
+	}
+
+	public List<EmployeeProjectDetails> getEmployeeprojectdetails() {
+		return employeeprojectdetails;
+	}
+
+	public void setEmployeeprojectdetails(List<EmployeeProjectDetails> employeeprojectdetails) {
+		this.employeeprojectdetails = employeeprojectdetails;
+	}
+
+	public List<EmployeeTechnolgyDetails> getEmployeetechnologydetails() {
+		return employeetechnologydetails;
+	}
+
+	public void setEmployeetechnologydetails(List<EmployeeTechnolgyDetails> employeetechnologydetails) {
+		this.employeetechnologydetails = employeetechnologydetails;
 	}
 
 	

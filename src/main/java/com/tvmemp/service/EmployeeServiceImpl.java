@@ -1,6 +1,7 @@
 package com.tvmemp.service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,6 +58,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 		emp1.setEmployeeAddress(employee.getEmployeeAddress());
 		emp1.setEmployeeEducation(employee.getEmployeeEducation());
 		emp1.setAssest(employee.getAssest());
+		emp1.setEmployeetechnologydetails(employee.getEmployeetechnologydetails());
+		emp1.setEmployeeprojectdetails(employee.getEmployeeprojectdetails());
+		
 		return repo.save(emp1);
 
 	}
@@ -89,7 +93,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public List<Object[]> getEmployeeByPassout(String yearofPassout) {
+	public List<Map<String,Object>> getEmployeeByPassout(String yearofPassout) {
 		
 		return repo.getEmployeeByPassout(yearofPassout);
 	}
@@ -107,5 +111,41 @@ public class EmployeeServiceImpl implements EmployeeService {
 		
 		return repo.findByAssestlaptop(laptop);
 	}
+
+	@Override
+	public List<TvmEmployee> findByUsersName(String str) {
+		
+		return repo.getUsersByTechnology(str);
+	}
+
+	@Override
+	public TvmEmployee getDataFromProject(TvmEmployee us) {
+		
+		return repo.save(us);
+	}
+
+	@Override
+	public TvmEmployee getStoretechDetails(TvmEmployee user) {
+		
+		return repo.save(user);
+	}
+
+	@Override
+	public List<Map<String, Object>> getByNameWithLogin(String empf) {
+		// TODO Auto-generated method stub
+		return repo.getByNameLoginDetails(empf);
+	}
+
+	@Override
+	public List<Map<String, Object>> getByEmpIdWithLogin(Integer id) {
+		
+		return repo.getByEmpIdLogio(id);
+	}
+	
+
+
+	
+
+	
 
 }

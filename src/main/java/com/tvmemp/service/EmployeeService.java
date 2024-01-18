@@ -1,6 +1,7 @@
 package com.tvmemp.service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.data.repository.query.Param;
@@ -27,7 +28,7 @@ public interface EmployeeService {
 	
 	public List<TvmEmployee>getEmployeeBylastName(String employeelastname );
 	
-	public List<Object[]> getEmployeeByPassout(String yearofPassout);
+	public List<Map<String, Object>> getEmployeeByPassout(String yearofPassout);
 	
 	// Getting Employee using Assets id
 	
@@ -35,7 +36,16 @@ public interface EmployeeService {
 	
 	
     public List<TvmEmployee> findByAssestlaptop(String laptop);
+    
+    public List<TvmEmployee> findByUsersName(String str);
+    
+    public TvmEmployee getDataFromProject(TvmEmployee us);
+    
+	public TvmEmployee getStoretechDetails(TvmEmployee user);
 
+	public List<Map<String, Object>> getByNameWithLogin(String empf);
+
+	public List<Map<String, Object>> getByEmpIdWithLogin(Integer id);
 
 
 	
